@@ -2,7 +2,7 @@
 kind: ReplicationController
 apiVersion: v1
 metadata:
-  namespace: default
+  namespace: linkerd-ns
   name: gen
 
 spec:

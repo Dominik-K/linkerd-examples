@@ -17,12 +17,12 @@ data:
     - protocol: http
       # Incoming requests to linkerd with a Host header of "hello" get assigned
       # a name like /svc/hello.  This dtab transforms that into
-      # /#/io.l5d.k8s/default/service/hello which indicates that the kubernetes
+      # /#/io.l5d.k8s/linkerd-ns/service/hello which indicates that the kubernetes
       # namer should query the API for ports named "service" on pods in the
-      # "default" namespace named "hello".  linkerd will then load balance over
+      # "linkerd-ns" namespace named "hello".  linkerd will then load balance over
       # those pods.
       dtab: |
-        /svc => /#/io.l5d.k8s/default/service
+        /svc => /#/io.l5d.k8s/linkerd-ns/service
       servers:
       - ip: 0.0.0.0
         port: 4140

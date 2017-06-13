@@ -27,7 +27,7 @@ data:
     - protocol: http
       label: ingress
       dtab: |
-        /srv                    => /#/io.l5d.k8s/default/http ;
+        /srv                    => /#/io.l5d.k8s/linkerd-ns/http ;
         /domain/world/hello/www => /srv/hello ;
         /domain/world/hello/api => /srv/api ;
         /host                   => /$/io.buoyant.http.domainToPathPfx/domain ;
@@ -36,7 +36,7 @@ data:
         kind: default
         transformers:
         - kind: io.l5d.k8s.daemonset
-          namespace: default
+          namespace: linkerd-ns
           port: incoming
           service: l5d
       servers:
@@ -46,7 +46,7 @@ data:
     - protocol: http
       label: outgoing
       dtab: |
-        /srv        => /#/io.l5d.k8s/default/http ;
+        /srv        => /#/io.l5d.k8s/linkerd-ns/http ;
         /host       => /srv ;
         /host/world => /srv/world-v1 ;
         /svc        => /host ;
@@ -54,7 +54,7 @@ data:
         kind: default
         transformers:
         - kind: io.l5d.k8s.daemonset
-          namespace: default
+          namespace: linkerd-ns
           port: incoming
           service: l5d
       servers:
@@ -67,7 +67,7 @@ data:
     - protocol: http
       label: incoming
       dtab: |
-        /srv                    => /#/io.l5d.k8s/default/http ;
+        /srv                    => /#/io.l5d.k8s/linkerd-ns/http ;
         /domain/world/hello/www => /srv/hello ;
         /domain/world/hello/api => /srv/api ;
         /host                   => /$/io.buoyant.http.domainToPathPfx/domain ;

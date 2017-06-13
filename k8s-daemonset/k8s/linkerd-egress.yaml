@@ -14,7 +14,7 @@ data:
       prefix: /io.l5d.k8s.ds # We reference this in the outgoing router's dtab
       transformers:
       - kind: io.l5d.k8s.daemonset
-        namespace: default
+        namespace: linkerd-ns
         port: incoming
         service: l5d
     - kind: io.l5d.k8s # The "basic" k8s namer.  We reference this in the incoming router's dtab
@@ -53,7 +53,7 @@ data:
     - protocol: http
       label: incoming
       dtab: |
-        /srv        => /#/io.l5d.k8s/default/http;
+        /srv        => /#/io.l5d.k8s/linkerd-ns/http;
         /host       => /srv;
         /svc        => /host;
         /host/world => /srv/world-v1;

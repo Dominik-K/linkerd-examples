@@ -103,7 +103,7 @@ Table (Dtab) that describes our default routing policy:
 :; namerctl dtab create default k8s/namerd/default.dtab
 :; namerctl dtab get default
 # version AAAAAAAAAAI=
-/srv                => /#/io.l5d.k8s/default/grpc ;
+/srv                => /#/io.l5d.k8s/linkerd-ns/grpc ;
 /srv/proto.GenSvc   => /srv/gen ;
 /srv/proto.WordSvc  => /srv/word ;
 /grpc               => /srv ;
@@ -273,7 +273,7 @@ canary the new service:
 
 ```
 :; cat k8s/namerd/default.dtab
-/srv                => /#/io.l5d.k8s/default/grpc;
+/srv                => /#/io.l5d.k8s/linkerd-ns/grpc;
 /srv/proto.GenSvc   => /srv/gen;
 /srv/proto.WordSvc  => /srv/word;
 /grpc               => /srv;

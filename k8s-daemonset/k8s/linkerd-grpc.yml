@@ -28,7 +28,7 @@ data:
       label: outgoing
       experimental: true
       dtab: |
-        /srv        => /#/io.l5d.k8s/default/grpc;
+        /srv        => /#/io.l5d.k8s/linkerd-ns/grpc;
         /grpc       => /srv;
         /grpc/World => /srv/world-v1;
         /svc        => /$/io.buoyant.http.domainToPathPfx/grpc;
@@ -39,7 +39,7 @@ data:
         kind: default
         transformers:
         - kind: io.l5d.k8s.daemonset
-          namespace: default
+          namespace: linkerd-ns
           port: incoming
           service: l5d
       servers:
@@ -50,7 +50,7 @@ data:
       label: incoming
       experimental: true
       dtab: |
-        /srv        => /#/io.l5d.k8s/default/grpc;
+        /srv        => /#/io.l5d.k8s/linkerd-ns/grpc;
         /grpc       => /srv;
         /grpc/World => /srv/world-v1;
         /svc        => /$/io.buoyant.http.domainToPathPfx/grpc;
