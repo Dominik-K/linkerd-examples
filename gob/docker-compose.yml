@@ -20,7 +20,7 @@ services:
     command: word
 
   linkerd:
-    image: buoyantio/linkerd:1.0.2
+    image: buoyantio/linkerd:1.1.0
     container_name: linkerd
     ports: ["4142:4142", "4141:4141", "9990:9990"]
     volumes: ["./config:/io.buoyant/linkerd/config:ro"]
